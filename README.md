@@ -151,33 +151,3 @@ celery -A mutualfund_project beat -l info
 
 > **Note:** The `--pool=solo` is mandatory for Windows due to multiprocessing limitations.
 
----
----
-
-## API Endpoints
-
-POST /register/
-Allows a new user to register by providing email and password. Returns a success message and user data.
-
-POST /api/token/
-Handles user login. Accepts email and password, and returns a pair of JWT access and refresh tokens on success.
-
-POST /fetch-fundhouses/
-Triggers a request to RapidAPI to fetch the list of available mutual fund houses and saves them into the local database.
-
-GET /fetch-fundhouses/
-Retrieves all fund houses stored in the database. Used to show fund options in the frontend.
-
-POST /fetch-schemes/
-Fetches all open-ended mutual fund schemes from RapidAPI and stores them, associating them with their corresponding fund house.
-
-GET /schemes/<fund_house_id>/
-Given a fund house ID, this returns the list of open-ended schemes associated with that fund house.
-
-GET /portfolio/
-Fetches the logged-in user’s portfolio including the schemes they invested in, the number of units, and the current calculated value (using latest NAV).
-
-POST /portfolio/
-Allows the user to add a new entry to their portfolio by specifying the scheme and number of units purchased.
-
----
